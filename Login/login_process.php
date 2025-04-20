@@ -84,12 +84,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($password == $row["password"]) {
             // Authentication successful
             $_SESSION["student_id"] = $row["student_id"];
+            $_SESSION["user_email"] = $email;
             // header("Location: http://localhost:3000/Student%20Dashboard/Homepage/home.php"); // Redirect to student dashboard
-            header("Location: http://localhost:3000/Student%20Dashboard/Homepage/home.php"); // Redirect to student dashboard
+            header("Location: http://localhost:3000/Login/2fa_verification.php"); // Redirect to student dashboard
 
         }
         else {
-            echo "Incorrect password.";
+           header("Location: login.php?error=incorrect_password"); // Redirect to login page with error parameter
+            exit;
         }
     } else if ($result2->num_rows == 1){
         $row2 = $result2->fetch_assoc();
@@ -97,28 +99,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Authentication successful
             $_SESSION["teacher_id"] = $row2["teacher_id"];
             $_SESSION["teacher_name"] = $row2["teacher_name"];
-            header("Location: http://localhost:3000/Teacher%20Dashboard/Home/Home/index.php"); // Redirect to student dashboard
+            $_SESSION["user_email"] = $email;
+            header("Location: http://localhost:3000/Login/2fa_verification.php"); // Redirect to student dashboard
         }
         else {
-            echo "Incorrect password.";
+            header("Location: login.php?error=incorrect_password"); // Redirect to login page with error parameter
+            exit;
         }
     } else if ($result3->num_rows == 1) {
         $row3 = $result3->fetch_assoc();
         if ($password == $row3["password"]) {
             // Authentication successful
             $_SESSION["controller_id"] = $row3["Id"];
-            header("Location: http://localhost:3000/Exam%20Controller/home/home.php"); // Redirect to student dashboard
+            $_SESSION["user_email"] = $email;
+            header("Location: http://localhost:3000/Login/2fa_verification.php"); // Redirect to student dashboard
         } else {
-            echo "Incorrect password.";
+            header("Location: login.php?error=incorrect_password"); // Redirect to login page with error parameter
+            exit;
         }
     } else if ($result4->num_rows == 1) {
         $row4 = $result4->fetch_assoc();
         if ($password == $row4["password"]) {
             // Authentication successful
             $_SESSION["admin_id"] = $row4["admin_id"];
-            header("Location: http://localhost:3000/Admin%20Dashboard/home/home.php"); // Redirect to student dashboard
+            $_SESSION["user_email"] = $email;
+            header("Location: http://localhost:3000/Login/2fa_verification.php"); // Redirect to student dashboard
         } else {
-            echo "Incorrect password.";
+            header("Location: login.php?error=incorrect_password"); // Redirect to login page with error parameter
+            exit;
         }
     }
     else {

@@ -1,14 +1,17 @@
 <?php
 session_start();
 
+
+if(isset($_GET['error']) && $_GET['error'] == 'incorrect_password') {
+    echo "Incorrect password.";
+}
+
+
 if (isset($_SESSION["password_reset_success"]) && $_SESSION["password_reset_success"]) {
     echo "<p>Password reset successfully! Now you can login with your new password:)</p>";
     unset($_SESSION["password_reset_success"]); // Clear the success flag
 }
 ?>
-
-
-
 
 
 <!DOCTYPE html>

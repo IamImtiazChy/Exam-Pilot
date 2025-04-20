@@ -32,12 +32,12 @@ function sendVerificationCode($email, $verificationCode) {
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'exampilot.nstu@gmail.com'; // Gmail email address
-        $mail->Password = 'flgkqmehikxknweq'; // Gmail password or app-specific password
+        $mail->Password = 'ontm kaji uags dwxf'; // Change app-specific password
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
         // Add debug output
-        $mail->SMTPDebug = 2; // Output debugging info
+        $mail->SMTPDebug = 0; // Output debugging info
 
         // Sender and recipient settings
         $mail->setFrom('exampilot.nstu@gmail.com', 'Exam Pilot');

@@ -36,7 +36,7 @@ function sendVerificationCode($email, $verificationCode) {
 
         $mail->isHTML(true);
         $mail->Subject = 'Password Reset Verification Code';
-        $mail->Body = "Your verification code is: $verificationCode";
+        $mail->Body = "Your verification code is: $verificationCode for password reset.";
 
         $mail->send();
         return true; // Email sent successfully
